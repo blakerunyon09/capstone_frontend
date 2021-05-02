@@ -60,7 +60,7 @@ export default function Login() {
             <h2 className={"font-bold text-2xl"}>business is performing?</h2>
           </div>
           <div className={"px-4"}>
-            <img alt="person looking at chart" className={"h-96"} src={window.location.origin + '/images/background_3.svg'} />
+            <img alt="person looking at chart" className={"h-96"} src={window.location.origin + '/images/backgrounds/background_3.svg'} />
             <p className={"text-sm pl-8 pt-8"}>Illustration by: <a className={"underlined"} href="https://undraw.co/">unDraw</a></p>
           </div>
         </aside>

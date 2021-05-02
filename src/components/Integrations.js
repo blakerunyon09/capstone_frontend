@@ -1,9 +1,13 @@
 import React from 'react'
+import Header from './Header'
 
-export default function Integrations() {
+export default function Integrations({ tab, setTab }) {
   return (
-    <div>
+    <>
+    <Header tab={tab} setTab={setTab}  />
+    <main>
       Integrations
-    </div>
+    </main>
+  </>
   )
 }

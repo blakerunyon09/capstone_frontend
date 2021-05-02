@@ -2,6 +2,25 @@
   text-decoration: underline !important
 }
 
+header {
+  width: 100vw
+}
+
+@media screen and (min-width: 768px) {
+  header {
+    width: calc(100vw - 89px)
+  }
+}
+
+.selectedSideNav {
+  border-right: 5px !important;
+  border-color: rgba(191, 219, 254) !important;
+  border-style: solid  !important;
+  /* width: 93px !important; */
+  /* box-shadow: 0px 4px 8px -4px rgba(191, 219, 254); */
+  background-color: rgba(156, 163, 175);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
