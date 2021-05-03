@@ -1,10 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
 import { BrowserRouter as Router, Route, BrowserRouter } from 'react-router-dom'
-import SideNav from './SideNav'
-import Dashboard from './Dashboards'
-import Integration from './Integrations'
-import BottomNav from './BottomNav'
+import SideNav from './Navigation/SideNav'
+import Integrations from './Integrations/IntegrationsMain'
+import Dashboards from './Dashboards/CurrentDashboards'
+import BottomNav from './Navigation/BottomNav'
 
 export default function Main() {
   const [tab, setTab] = useState(0);
@@ -16,10 +16,10 @@ export default function Main() {
           <BrowserRouter>
             <SideNav />
             <Route path="/app/dashboards">
-              <Dashboard tab={tab} setTab={setTab} />
+              <Dashboards tab={tab} setTab={setTab} />
             </Route>
             <Route path="/app/integrations">
-              <Integration tab={tab} setTab={setTab} />
+              <Integrations tab={tab} setTab={setTab} />
             </Route>
             <BottomNav />
           </BrowserRouter>

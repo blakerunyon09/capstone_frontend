@@ -1,34 +1,21 @@
 import React from 'react'
 import { useState } from 'react'
-// import { TextField } from '@material-ui/core'
-import IntegrationLogo from './IntegrationLogo'
+import IntegrationCard from './IntegrationCard'
+import { IntegrationsList } from './IntegrationsList'
 import { FaAngleUp, FaAngleDown } from 'react-icons/fa'
 
-export default function CreateDashboards() {
+export default function AvailableIntegrationsList({ setSelectedIntegration }) {
 
   const [showIntegrations, setShowIntegrations] = useState(true)
 
-  const logos = [
-    '/images/logos/Hubspot.png', 
-    '/images/logos/Active.png'
-  ]
-
   const buildLogos = () => {
-    return logos.map( l => {
-      console.log(l)
-      return <IntegrationLogo key={l} logo={l} />
+    return IntegrationsList.map( integration => {
+      return <IntegrationCard key={integration.name} integration={integration} setSelectedIntegration={setSelectedIntegration} />
     })
   }
 
   return (
-    <section>
-      {/* <div className={"px-8 py-8 bg-blue-400 w-80 rounded-lg flex items-center justify-between"}>
-        <FaDatabase className={"text-4xl text-gray-600"} />
-        <div>
-          <p className={"font-bold pb-1"}>Search</p>
-          <TextField id="outlined-basic" label="Search Connections" variant="outlined" />
-        </div>
-      </div> */}
+    <>
       <div onClick={() => setShowIntegrations(!showIntegrations)} className={"pt-4 flex flex-row text-gray-500"}>
         <div className={"pr-2 my-auto text-lg"}  >
         { showIntegrations
@@ -42,6 +29,6 @@ export default function CreateDashboards() {
       <div className={`${showIntegrations ? null : "hidden"} flex flex-row pt-8`}>
         {buildLogos()}
       </div>
-    </section>
+    </>
   )
 }
