@@ -6,22 +6,44 @@ export const IntegrationsList = [
       [
           {
           name: "Seasons",
-          requestRequirements: {
-            appToken: null,
-            applicationName: null,
-            password: null,
-            seasonIds: null
-          },
           request: {
-            appToken: "Bj45ayY+J1dGddxipZVH17FPdd1Kn5tYNSEfn5wonUBop2BrjhoQCHBbanDTs5BL",
+            appToken: '',
             request:
               {
-                applicationName: "MyOrganization",
-                userName: "registrar@camp.org",
-                password: "123456",
-                seasonIds: [557902]
+                applicationName: '',
+                userName: '',
+                password: '',
+                seasonIds: ''
               }
-            }
+            },
+          setUpForm: [
+            {
+              inputName: "Application Token",
+              requestName: "appToken",
+              type: "text"
+            },
+            {
+              inputName: "Application Name",
+              requestName: "applicationName",
+              type: "text"
+            },
+            {
+              inputName: "Username",
+              requestName: "userName",
+              type: "text"
+            },
+            {
+              inputName: "Password",
+              requestName: "password",
+              type: "password"
+            },
+            {
+              inputName: "Season IDs",
+              requestName: "seasonIds",
+              type: "text",
+              note: "Optional: '517746, 613772, 439112' If left blank, will return all seasons."
+            },
+            ]
           },
         {
           name: "Tuition"
@@ -37,11 +59,9 @@ export const IntegrationsList = [
   {
     name: "Hubspot",
     logo: "/images/logos/Hubspot.png",
-    apis: {
-      comingSoon: {
-        name: "Coming Soon"
-      }
-    }
+    apis: [
+      {comingSoon: "Coming Soon"}
+    ]
   },
 ]
 
