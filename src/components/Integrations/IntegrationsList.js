@@ -6,6 +6,7 @@ export const IntegrationsList = [
       [
           {
           name: "Seasons",
+          endpoint: 'https://awapi.active.com/rest/camps-season-info',
           request: {
             appToken: '',
             request:
@@ -13,7 +14,7 @@ export const IntegrationsList = [
                 applicationName: '',
                 userName: '',
                 password: '',
-                seasonIds: ''
+                seasonIds: []
               }
             },
           setUpForm: [
@@ -37,12 +38,12 @@ export const IntegrationsList = [
               requestName: "password",
               type: "password"
             },
-            {
-              inputName: "Season IDs",
-              requestName: "seasonIds",
-              type: "text",
-              note: "Optional: '517746, 613772, 439112' If left blank, will return all seasons."
-            },
+            // {
+            //   inputName: "Season IDs",
+            //   requestName: "seasonIds",
+            //   type: "text",
+            //   note: "Optional: '517746, 613772, 439112' If left blank, will return all seasons."
+            // },
             ]
           },
         {

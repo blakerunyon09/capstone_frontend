@@ -1,6 +1,7 @@
 import Main from './components/Main'
 import Login from './components/LoginRegister/Login'
 import SignUp from './components/LoginRegister/SignUp'
+import FetchTest from './components/FetchTest'
 import { BrowserRouter as Router, Route, BrowserRouter } from 'react-router-dom'
 
 function App() {
@@ -15,6 +16,9 @@ function App() {
         </Route>
         <Route path="/app">
           <Main />
+        </Route>
+        <Route path="/fetchtest">
+          <FetchTest />
         </Route>
       </BrowserRouter>
     </Router>

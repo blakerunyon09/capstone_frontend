@@ -69,6 +69,13 @@ export default function SetUp({ selectedMetric, selectedIntegration }) {
     }
   }
 
+  const fetchData = () => {
+    fetch('http://localhost:8080/api/fetchTest')
+    .then(res => res.text())
+    .then(data => console.log(data))
+    .catch(console.error)
+  }
+
   return (
     <>
       <div className={"pt-4"}>
@@ -88,7 +95,7 @@ export default function SetUp({ selectedMetric, selectedIntegration }) {
             className={"w-40 bg-blue-500 mt-4"} 
             variant="contained" 
             color="primary" 
-            onClick={() => {}}
+            onClick={() => fetchData()}
           >
             Connect API
           </Button>
