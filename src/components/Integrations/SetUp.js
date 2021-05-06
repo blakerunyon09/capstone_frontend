@@ -1,18 +1,31 @@
 import React from 'react'
-import { useState } from 'react'
-import { IntegrationsList } from './IntegrationsList'
+import { useState, useEffect } from 'react'
 import { TextField, Button } from '@material-ui/core'
-import { keys } from '@material-ui/core/styles/createBreakpoints'
 
 export default function SetUp({ selectedMetric, selectedIntegration }) {
 
   const[ formValues, setFormValues ] = useState({})
-  const [ requestBody, setRequestBody ] = useState(findAPI().request)
+  const [ integration, setIntegration ] = useState()
+  const [ requestBody, setRequestBody ] = useState()
+
+  useEffect(() => {
+    const endpoint = `http://localhost:8080/frontend/${selectedIntegration}/${selectedMetric}`
+
+    fetch(endpoint)
+    .then(res => res.json())
+    .then(data => {
+      setIntegration(data)
+      setRequestBody(data.metric.request)
+    })
+    .catch(console.error)
+    
+  }, [selectedIntegration, selectedMetric])
   
-  function findAPI(){
-    const foundIntegration = IntegrationsList.find(api => api.name === selectedIntegration) 
-    return foundIntegration.apis.find(apiType => apiType.name === selectedMetric)
-  }
+  
+  // function findAPI(){
+  //   const foundIntegration = IntegrationsList.find(api => api.name === selectedIntegration) 
+  //   return foundIntegration.apis.find(apiType => apiType.name === selectedMetric)
+  // }
 
   const findRequestKey = (e, object) => {
     let finalKey = []
@@ -31,7 +44,7 @@ export default function SetUp({ selectedMetric, selectedIntegration }) {
   const updateRequest = (e) => {
     let newValue = findRequestKey(e, requestBody)
     setFormValues({...formValues, [e.target.id]: e.target.value})
-    console.log(newValue[1])
+
     if(newValue.length === 1){
     setRequestBody({
       ...requestBody,
@@ -50,8 +63,7 @@ export default function SetUp({ selectedMetric, selectedIntegration }) {
 
   const buildForms = () => {
     if(selectedMetric){
-    const foundMetric = findAPI()
-    return foundMetric.setUpForm.map(field => {
+    return integration.metric.setUpForm.map(field => {
       return (
           <TextField 
             id={field.requestName} 
@@ -70,8 +82,24 @@ export default function SetUp({ selectedMetric, selectedIntegration }) {
   }
 
   const fetchData = () => {
-    fetch('http://localhost:8080/api/fetchTest')
-    .then(res => res.text())
+    const token = localStorage.getItem('token');
+
+    fetch('http://localhost:8080/api/add-integration', {
+      method: "POST",
+      headers: {
+        "Content-Type":"application/json",
+        "Accept":"application/json",
+        token,
+        provider: selectedIntegration,
+        type: selectedMetric,
+        requestBody: JSON.stringify(requestBody),
+        requestHeader: JSON.stringify({
+          "Content-Type":"application/json",
+          "Accept":"application/json",
+        })
+      }
+    })
+    .then(res => res.json())
     .then(data => console.log(data))
     .catch(console.error)
   }
@@ -79,18 +107,19 @@ export default function SetUp({ selectedMetric, selectedIntegration }) {
   return (
     <>
       <div className={"pt-4"}>
-        <img 
-          alt={`${selectedIntegration} Logo`} 
+          {
+          integration && <img 
+          alt={`${integration.name} Logo`} 
           src={`${window.location.origin}/images/logos/${selectedIntegration}.png`} 
-          className={"relative w-48 transition-all duration-500"} 
-        />
+          className={"relative w-48 transition-all duration-500"} />
+          }
       </div>
       <div className={"text-2xl mt-10 font-bold text-gray-600"}>
-          {selectedMetric} API
+          {integration && integration.metric.name} API
       </div>
       <div>
         <form className={"flex flex-col mt-2 w-60"}>
-          {buildForms()}
+          {integration && buildForms()}
           <Button 
             className={"w-40 bg-blue-500 mt-4"} 
             variant="contained" 

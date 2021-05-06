@@ -1,15 +1,22 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import IntegrationCard from './IntegrationCard'
-import { IntegrationsList } from './IntegrationsList'
 import { FaAngleUp, FaAngleDown } from 'react-icons/fa'
 
 export default function AvailableIntegrationsList({ setSelectedIntegration }) {
 
   const [showIntegrations, setShowIntegrations] = useState(true)
+  const [ integrationTiles, setIntegrationTiles ] = useState()
+
+  useEffect(() => {
+    fetch('http://localhost:8080/frontend/integrations')
+    .then(res => res.json())
+    .then(setIntegrationTiles)
+    .catch(console.error)
+  }, [])
 
   const buildLogos = () => {
-    return IntegrationsList.map( integration => {
+    return integrationTiles.map( integration => {
       return <IntegrationCard key={integration.name} integration={integration} setSelectedIntegration={setSelectedIntegration} />
     })
   }
@@ -27,7 +34,7 @@ export default function AvailableIntegrationsList({ setSelectedIntegration }) {
         <div className={"ml-2 w-12 h-0 my-auto flex-grow border-dashed border-gray-500 border-b"}></div>
       </div>
       <div className={`${showIntegrations ? null : "hidden"} flex flex-row pt-8`}>
-        {buildLogos()}
+        {integrationTiles && buildLogos()}
       </div>
     </>
   )
