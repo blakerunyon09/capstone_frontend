@@ -30,7 +30,7 @@ export default function FetchTest() {
 
   useEffect(()=> {
     fetchData()
-  })
+  }) // dependency array
 
   return (
     <div>

@@ -4,8 +4,8 @@ import { Link, useHistory } from 'react-router-dom'
 import { Button, TextField } from '@material-ui/core'
 import { FaTimes } from "react-icons/fa";
 
-
-export default function Login() {
+// comment
+export function Login() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -17,6 +17,7 @@ export default function Login() {
     if(login) history.push("/app");
   }, [login, history])
 
+  // comment on extraction
   const fetchUser = () => {
     fetch('http://localhost:8080/api/login',{
       method: "POST",
@@ -45,6 +46,7 @@ export default function Login() {
   return (
     <main>
       {
+        // comment on &&
         error 
         ? <div className={"flex flex-row justify-between text-white font-bold my-auto bg-red-600 p-4"}>
             <div>{error}</div>
