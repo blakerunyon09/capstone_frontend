@@ -21,7 +21,7 @@ export const fetchUser = ({ email, password, onSuccess, onFailure }) => {
           onFailure(result);
         }
       })
-      .catch(console.log)
+      .catch(onFailure)
 }
 
 // comment on async await
