@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Button, TextField } from '@material-ui/core'
 
-export default function Login() {
+export function Login() {
 
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
@@ -16,6 +16,7 @@ export default function Login() {
     if(login) history.push("/app");
   }, [login, history])
 
+  // comment on naming and extraction
   const fetchUser = () => {
     fetch('http://localhost:8080/api/register',{
       method: "POST",

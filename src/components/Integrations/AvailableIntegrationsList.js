@@ -15,6 +15,7 @@ export default function AvailableIntegrationsList({ setSelectedIntegration }) {
     .catch(console.error)
   }, [])
 
+  // comment on un-needed extraction
   const buildLogos = () => {
     return integrationTiles.map( integration => {
       return <IntegrationCard key={integration.name} integration={integration} setSelectedIntegration={setSelectedIntegration} />
