@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Route, BrowserRouter } from 'react-router-dom'
 import SideNav from './Navigation/SideNav'
 import Integrations from './Integrations/IntegrationsMain'
-import Dashboards from './Dashboards/CurrentDashboards'
+import Dashboards from './Dashboards/DashboardContainer'
 import BottomNav from './Navigation/BottomNav'
 
 export default function Main() {
