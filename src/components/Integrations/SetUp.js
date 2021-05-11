@@ -9,7 +9,7 @@ export default function SetUp({ selectedMetric, selectedIntegration }) {
   const [ requestBody, setRequestBody ] = useState()
 
   useEffect(() => {
-    const endpoint = `http://localhost:8080/frontend/${selectedIntegration}/${selectedMetric}`
+    const endpoint = `${process.env.DB_HOST || 'https://mysterious-journey-89767.herokuapp.com'}/frontend/${selectedIntegration}/${selectedMetric}`
 
     fetch(endpoint)
     .then(res => res.json())

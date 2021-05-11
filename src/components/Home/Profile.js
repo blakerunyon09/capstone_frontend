@@ -9,7 +9,7 @@ export default function Profile() {
 
   useEffect(() => {
       const token = localStorage.getItem('token');
-      fetch('http://localhost:8080/api/show-integrations',{
+      fetch(`${process.env.DB_HOST || 'https://mysterious-journey-89767.herokuapp.com'}/api/show-integrations`,{
         method: "GET",
         headers:{
           token

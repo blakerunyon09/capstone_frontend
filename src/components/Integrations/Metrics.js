@@ -9,7 +9,7 @@ export default function Metrics({ selectedIntegration, setSelectedMetric }) {
   const [ metricTiles, setMetricTiles ] = useState()
 
   useEffect(() => {
-    const endpoint = `http://localhost:8080/frontend/${selectedIntegration.toLowerCase()}`
+    const endpoint = `${process.env.DB_HOST || 'https://mysterious-journey-89767.herokuapp.com'}/frontend/${selectedIntegration.toLowerCase()}`
 
     fetch(endpoint)
     .then(res => res.json())

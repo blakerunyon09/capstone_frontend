@@ -12,7 +12,7 @@ export default function DashboardTile({ name }) {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    fetch('http://localhost:8080/api/show-integrations',{
+    fetch(`${process.env.DB_HOST || 'https://mysterious-journey-89767.herokuapp.com'}/api/show-integrations`,{
       method: "GET",
       headers:{
         token
@@ -42,7 +42,7 @@ export default function DashboardTile({ name }) {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    fetch(`http://localhost:8080/api/integration/${selectedIntegration}`,{
+    fetch(`${process.env.DB_HOST || 'https://mysterious-journey-89767.herokuapp.com'}/api/integration/${selectedIntegration}`,{
       method: "GET",
       headers: {
         token
@@ -51,7 +51,7 @@ export default function DashboardTile({ name }) {
     .then(res => res.json())
     .then(data => {
       setTitle(`${data.provider} ${data.type}`)
-      fetch('http://localhost:8080/fetch/',{
+      fetch(`${process.env.DB_HOST || 'https://mysterious-journey-89767.herokuapp.com'}/fetch/`,{
         method: "GET",
         headers: {
           ...data

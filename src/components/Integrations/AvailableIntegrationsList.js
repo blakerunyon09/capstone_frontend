@@ -9,7 +9,7 @@ export default function AvailableIntegrationsList({ setSelectedIntegration }) {
   const [ integrationTiles, setIntegrationTiles ] = useState()
 
   useEffect(() => {
-    fetch('http://localhost:8080/frontend/integrations')
+    fetch(`${process.env.DB_HOST || 'https://mysterious-journey-89767.herokuapp.com'}/frontend/integrations`)
     .then(res => res.json())
     .then(setIntegrationTiles)
     .catch(console.error)
