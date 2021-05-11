@@ -13,7 +13,7 @@ export default function DashboardBody({ dashboard }) {
 
   return (
     <div
-      className={`${isOver ? "bg-blue-100" : "bg-white"} w-11/12 h-full`}
+      className={`flex flex-row flex-wrap ${isOver ? "bg-blue-100" : "bg-gray-300"} w-11/12 h-full p-4`}
       ref={drop}
       style={{ backgroundColor: isOver ? "yellow" : "salmon" }}
     >

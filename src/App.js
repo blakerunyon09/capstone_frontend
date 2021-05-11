@@ -14,10 +14,10 @@ function App() {
         <Route exact path="/sign-up">
           <SignUp />
         </Route>
-        <Route path="/app">
+        <Route exact path="/app">
           <Main />
         </Route>
-        <Route path="/fetchtest">
+        <Route exact path="/fetchtest">
           <FetchTest />
         </Route>
       </BrowserRouter>

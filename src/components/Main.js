@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { BrowserRouter as Router, Route, BrowserRouter } from 'react-router-dom'
 import SideNav from './Navigation/SideNav'
+import Profile from './Home/Profile'
 import Integrations from './Integrations/IntegrationsMain'
 import Dashboards from './Dashboards/DashboardContainer'
 import BottomNav from './Navigation/BottomNav'
@@ -15,6 +16,9 @@ export default function Main() {
         <Router>
           <BrowserRouter>
             <SideNav />
+            <Route exact path="/app">
+              <Profile tab={tab} setTab={setTab} />
+            </Route>
             <Route path="/app/dashboards">
               <Dashboards tab={tab} setTab={setTab} />
             </Route>
