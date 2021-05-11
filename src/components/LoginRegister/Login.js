@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Button, TextField } from '@material-ui/core'
 import { FaTimes } from "react-icons/fa";
-
+require('dotenv').config()
 
 export default function Login() {
 
@@ -18,7 +18,7 @@ export default function Login() {
   }, [login, history])
 
   const fetchUser = () => {
-    fetch('http://localhost:8080/api/login',{
+    fetch(`${process.env.DB_HOST || 'https://mysterious-journey-89767.herokuapp.com'}/api/login`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json",

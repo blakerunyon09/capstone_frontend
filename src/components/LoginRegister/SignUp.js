@@ -17,7 +17,7 @@ export default function Login() {
   }, [login, history])
 
   const fetchUser = () => {
-    fetch('http://localhost:8080/api/register',{
+    fetch(`${process.env.DB_HOST || 'https://mysterious-journey-89767.herokuapp.com'}/api/register`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
