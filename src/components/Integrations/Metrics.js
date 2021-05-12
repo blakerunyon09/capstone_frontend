@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import MetricCard from './MetricCard'
 import { FaAngleUp, FaAngleDown } from 'react-icons/fa'
+require('dotenv').config()
 
 export default function Metrics({ selectedIntegration, setSelectedMetric }) {
 

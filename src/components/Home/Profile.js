@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Button } from '@material-ui/core'
+require('dotenv').config()
 
 export default function Profile() {
 

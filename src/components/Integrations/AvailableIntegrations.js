@@ -5,8 +5,6 @@ import Metrics from './Metrics'
 import SetUp from './SetUp'
 import { BrowserRouter as Router, Route, BrowserRouter } from 'react-router-dom'
 
-
-
 export default function AvailableIntegrations() {
 
   const [selectedIntegration, setSelectedIntegration] = useState(null)

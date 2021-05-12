@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { TextField, Button } from '@material-ui/core'
+require('dotenv').config()
 
 export default function SetUp({ selectedMetric, selectedIntegration }) {
 
@@ -84,7 +85,7 @@ export default function SetUp({ selectedMetric, selectedIntegration }) {
   const fetchData = () => {
     const token = localStorage.getItem('token');
 
-    fetch('http://localhost:8080/api/add-integration', {
+    fetch(`${process.env.DB_HOST || 'https://mysterious-journey-89767.herokuapp.com'}/api/add-integration`, {
       method: "POST",
       headers: {
         "Content-Type":"application/json",

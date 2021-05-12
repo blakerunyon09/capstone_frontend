@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { FaAngleUp, FaAngleDown, FaCheck } from 'react-icons/fa'
 import { Button, Menu, MenuItem } from '@material-ui/core'
+require('dotenv').config()
 
 export default function Integrations({ tab, setTab }) {
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import IntegrationCard from './IntegrationCard'
 import { FaAngleUp, FaAngleDown } from 'react-icons/fa'
+require('dotenv').config()
 
 export default function AvailableIntegrationsList({ setSelectedIntegration }) {
 

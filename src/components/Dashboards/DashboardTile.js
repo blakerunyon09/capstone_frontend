@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Bar, Line, Doughnut } from 'react-chartjs-2'
 import { FormControl, Select, MenuItem } from '@material-ui/core'
+require('dotenv').config()
 
 export default function DashboardTile({ name }) {
 

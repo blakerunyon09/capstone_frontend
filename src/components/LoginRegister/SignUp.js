@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Button, TextField } from '@material-ui/core'
+require('dotenv').config()
 
 export default function Login() {
 
