@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, BrowserRouter } from 'react-router-dom'
 import SideNav from './Navigation/SideNav'
 import Profile from './Home/Profile'
@@ -9,6 +9,14 @@ import BottomNav from './Navigation/BottomNav'
 
 export default function Main() {
   const [tab, setTab] = useState(0);
+  const [ herokuAwake, setHerokuAwake ] = useState(false)
+
+  useEffect(() => {
+    if(!herokuAwake){
+      fetch(`${process.env.DB_HOST || 'https://mysterious-journey-89767.herokuapp.com'}/frontend/integrations`)
+      .then(setHerokuAwake(true))
+    }
+  }, [herokuAwake])
 
   return (
     <>
