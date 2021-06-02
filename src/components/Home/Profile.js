@@ -22,6 +22,7 @@ export default function Profile() {
   },[])
 
   let history = useHistory()
+
   const logout = () => {
     localStorage.removeItem('token');
     history.push('/')
@@ -51,9 +52,7 @@ export default function Profile() {
             </div>
           </div>
         </div>
-        <div
-          className={"h-48 w-6/12 flex-grow mb-4 bg-gray-100 rounded-lg p-6"}
-        >
+        <div className={"h-48 w-6/12 flex-grow mb-4 bg-gray-100 rounded-lg p-6"}>
           <div className={"m-6 rounded font-bold text-2xl"}>
             <div className={"border-b border-gray-500"}>Integrations</div>
           </div>
@@ -67,9 +66,7 @@ export default function Profile() {
     )}
 
   return (
-    <main 
-      className={"w-full h-screen flex flex-fow justify-center items-center bg-blue-400"}
-    >
+    <main className={"w-full h-screen flex flex-fow justify-center items-center bg-blue-400"}>
       {user ? buildProfile() : null}
     </main>
     )
